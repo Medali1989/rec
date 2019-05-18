@@ -1,0 +1,58 @@
+<section class="block block-mt">
+    <div class="container">
+      <div class="title-group line-default">
+        <h1 class="selected">register profil</h1>
+        
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <form [formGroup]='User' class="box p-40"><!-- Nav tabs --><!-- Tab panes -->
+            <mat-form-field class="example-full-width">
+                <input matInput required type="text" maxlength="20" class="form-item" placeholder="FirstName" name="firstName" formControlName="firstName">
+                <mat-error *ngIf="User.get('firstName').invalid">
+                    required!!
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <input matInput required type="text" maxlength="20" class="form-item" placeholder="LastName" name="lastname" formControlName="lastname">
+              <mat-error *ngIf="User.get('lastname').invalid">
+                  required!!
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input matInput  required (blur)="existt()" type="text" maxlength="40" class="form-item" placeholder="Email" name="email" formControlName="email">
+                <mat-error *ngIf="User.get('email').hasError('email') && !User.get('email').hasError('required')">
+                    Please enter a valid email address
+                  </mat-error>
+                  <mat-error *ngIf="User.get('email').hasError('required')">
+                    Email is <strong>required</strong>
+                  </mat-error>
+                  <mat-error *ngIf="!User.get('email').hasError('valid') && !User.get('email').hasError('required')&& !User.get('email').hasError('email')">
+                    Email is already exist
+                  </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <input matInput required type="password" maxlength="20" class="form-item" placeholder="Password" name="password" formControlName="password">
+                <mat-error *ngIf="User.get('password').hasError('minlength') && !User.get('password').hasError('required')">
+                    Min length 8
+                </mat-error>
+                <mat-error *ngIf="User.get('password').hasError('required')">
+                  Password is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+            <input matInput  required (blur)="passwordExist()" type="password" maxlength="20"  class="form-item" placeholder="Confrim password" name="passwordv" formControlName="passwordv">
+            
+            <mat-error *ngIf="User.get('passwordv').invalid">
+              Confirm Password must be like <strong>Password</strong>
+            </mat-error>       
+          </mat-form-field>
+            <div class="checkbox">
+                <label><input type="radio"  value="male" formControlName="gender" > Male</label><label><input type="radio" name="gender" value="female" formControlName="gender"> Female</label>
+            </div>            
+            <button (click)="Register(User)" [disabled]="User.invalid" class="ht-btn bg-4f84c4 m-t-20">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>

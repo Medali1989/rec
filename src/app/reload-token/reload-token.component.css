@@ -1,0 +1,15 @@
+.text-desable{
+    color: rgb(109, 110, 110)
+}
+.block-mt{
+    margin-top : 80px;
+}
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.example-full-width {
+width: 100%;
+}

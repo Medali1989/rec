@@ -1,0 +1,126 @@
+<div class="preloader"><i class="fa fa-spinner"></i></div>
+	<div >
+			<div class="menu-rs">
+					<div class="menu-wrap">
+						<div class="r-mv">
+							<span></span>
+							<span></span>
+						</div>
+						<ul class="menu-mb">
+							<li><a routerLink="home"   role="button" aria-haspopup="true" aria-expanded="false">home</a></li>
+							
+							<li *ngIf="user.company">
+									<a routerLink="/Company/CompanyHome"   role="button" aria-haspopup="true" aria-expanded="false">Company Home</a>
+							</li>
+							<li *ngIf="user.company">
+									<a routerLink="Company/PostJob" role="button" aria-haspopup="true" aria-expanded="false">Post job</a>
+							</li>
+								<li *ngIf="user.company">
+									<a routerLink="Company/ManageJob"  role="button" aria-haspopup="true" aria-expanded="false">Manage job</a>
+								</li>
+								<li *ngIf="user.company">
+									<a routerLink="/home" (click)="logout()"   role="button" aria-haspopup="true" aria-expanded="false">Log Out</a>
+								</li>
+							<li *ngIf="!connected">
+								<a routerLink="/RegisterCompany"  role="button" aria-haspopup="true" aria-expanded="false">Register Company</a>
+							
+							</li>
+							<li *ngIf="!connected">
+								<a routerLink="/RegisterProfil"   role="button" aria-haspopup="true" aria-expanded="false">Register Profil </a>
+							</li>
+							<li  *ngIf="!connected">
+								<a routerLink="/Login"  role="button" aria-haspopup="true" aria-expanded="false">Login</a>		
+							</li>
+							<li  *ngIf="user?.profile">
+								<a routerLink=""  role="button">My Profile</a>
+							</li>
+							<li  *ngIf="user?.profile">
+								<a  routerLink="" role="button">My jobs List</a>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+				<header class="header-absolute smaller">
+					<div class="top-header">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-6 hidden-xs hidden-sm">
+									<ul class="top-link">
+										<li><i class="far fa-envelope m-r-5"></i>info@jobseeker.com</li>
+										<li><i class="fa fa-phone m-r-5"></i>+0123 456 789</li>
+									</ul>
+								</div>
+								<div class="col-sm-12 col-md-6">
+									<ul class="top-link pull-right">										
+										<li class="dropdown user" *ngIf="connected && user.company">
+											<a href="#l.html" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{company?.nameCompany}}</a>
+											<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+												<li><a routerLink="/Company/CompanyHome">Dashboard</a></li>
+												<li><a routerLink="" (click)="logout()">Log out</a></li>
+											</ul>
+										</li>
+										<li class="dropdown user" *ngIf="connected && user.profile">
+											<a href="#l.html" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{profil?.firstName}}</a>
+											<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+												<li><a routerLink="">Dashboard</a></li>
+												<li><a routerLink="" (click)="logout()">Log out</a></li>
+											</ul>
+										</li>
+										<li *ngIf="!connected">
+											<a routerLink="/Login">Login</a>
+										</li>
+										<li class="menu-btn"><i class="fa fa-bars f-14 icon icon-20"></i></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="main-header p-b-20 p-t-20 animated slideInDown">
+						<div class="container">
+							<div class="row">
+								<div class="col-sm-6 col-md-3">
+									<a href="#" class="logo m-t-10 m-b-10">
+										<img src="../../assets/images/mt-0996-logo.png" alt="image" class="pull-left m-r-5 w-40">
+										<h2 class="f-25 f-weight-300 f-family-poppins text-uppercase p-t-10 p-b-10">Job<strong class="f-weight-600 color-4f84c4">Seeker</strong></h2>
+									</a>
+								</div>
+								<div class="col-sm-7 hidden-xs hidden-sm pull-right text-right">
+									<nav id="holder_mn" class="menu-nav">
+										<ul>
+											<li >
+												<a routerLink="/home"  role="button" aria-haspopup="true" aria-expanded="false">home</a>
+											</li>
+											<li  *ngIf="user.company">
+												<a routerLink="/Company/CompanyHome"   role="button" aria-haspopup="true" aria-expanded="false">Company Home</a>
+											</li>
+											<li *ngIf="user.company">
+												<a routerLink="Company/PostJob" role="button" aria-haspopup="true" aria-expanded="false">Post job</a>
+											</li>
+											<li  *ngIf="user.company">
+												<a routerLink="Company/ManageJob"  role="button" aria-haspopup="true" aria-expanded="false">Manage job</a>
+											</li>
+											<li *ngIf="!connected">
+													<a routerLink="/RegisterCompany" role="button" aria-haspopup="true" aria-expanded="false">Register Company</a>
+												</li>
+											<li *ngIf="!connected">
+												<a routerLink="/RegisterProfil"   role="button" aria-haspopup="true" aria-expanded="false">Register Profil</a>
+											</li>
+											<li  *ngIf="user?.profile">
+												<a routerLink=""  role="button">My Profile</a>
+											</li>
+											<li  *ngIf="user?.profile">
+												<a routerLink=""  role="button">My offers List</a>
+											</li>
+											<li class="dropdown" *ngIf="!connected">
+												<a routerLink="/Login"  role="button" aria-haspopup="true" aria-expanded="false">login</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
+				</header>
+	</div>
+	

@@ -1,0 +1,18 @@
+.selected{
+    text-shadow: 1px 1px rgba(71, 70, 70, 0.575)
+}
+.thumb-item{
+    cursor: pointer;
+}
+.thumb-item:hover{
+    text-shadow: 1px 1px rgba(71, 70, 70, 0.575)
+}
+.mr{
+    margin-right: 20px !important;
+}
+.TitleSpan{
+    cursor: pointer;
+}
+.TitleSpan:hover{
+    text-decoration: underline;
+}

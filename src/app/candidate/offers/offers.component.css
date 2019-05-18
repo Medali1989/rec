@@ -1,0 +1,31 @@
+.example-header{
+    margin-top: 200px;
+}
+.example-full-width{
+    width : 100%;
+}
+.example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+}
+.title-group{
+    margin-bottom: -200px !important;
+}
+.mat-elevation-z8{
+    padding-top: 20px!important
+}
+.custom-control-label{
+    margin-right: 30px;
+}
+.bg-0e76a8{
+    background: #0077B5;
+    color: white;
+}
+.table-filter{
+    background: rgba(238, 235, 235, 0.295);
+    border-radius: 10px;
+}
+.table-filter label{
+    margin-right: 5px;
+}

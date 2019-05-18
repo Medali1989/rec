@@ -1,0 +1,126 @@
+<section class="block">
+  <div class="container">
+    <div class="title-group line-default">
+      <h1 class="selected">Job Detail</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing  labore et dolore magna</p>
+    </div>
+    <div class="row">
+        <div class="col-md-3 ">
+            <div class="list-2"><!-- Product-item -->
+              <a routerLink="/Company/CompanyHome" class="thumb-item">
+                  <i class="far fa-building"></i>
+                  <h4 class="heading">Company Home<br></h4>
+                </a>
+              <a class="thumb-item">
+                <i class="fas fa-file-alt"></i>
+                <h4 class="heading">Company profile<br></h4>
+              </a>
+              <a routerLink="/Company/ListJob" class="thumb-item">
+                <i class="far fa-sticky-note"></i>
+                <h4 class="heading">Manage jobs<br></h4>
+              </a>
+              <a class="thumb-item selected" routerLink="/Company/PostJob">
+                <i class="fas fa-cloud-upload-alt mr"></i>
+                <h4 class="heading">Post job<br></h4>
+              </a>
+            </div>
+          </div>
+      <div class="col-sm-9">
+        <div class="box p-40">
+          <div></div>
+          <h4 class="heading line-default line-default-left m-b-40 p-t-0 f-30 f-weight-500">{{LocalJob?.post}} Detail: {{LocalJob?.status}} 
+            <div *ngIf="LocalJob?.status !='Deleted'"><button (click)="DeleteJob(LocalJob?._id, LocalJob)" type="button" class="btn btn-danger DeleteJob"><i class="fas fa-times"></i></button></div>
+            <div *ngIf="LocalJob?.status !='Active'"><button (click)="publishJob(LocalJob?._id, LocalJob)" type="button" class="btn btn-success DeleteJob"><i class="fas fa-check"></i></button></div>
+          </h4>
+          <h5>Type Job:</h5>
+          <ul *ngFor="let item of LocalJob?.type_job">
+            <li>{{item}}</li>
+          </ul>
+          <h5>Time Job:</h5>
+          <ul *ngFor="let item of LocalJob?.time_job">
+              <li>{{item}}</li>
+          </ul>
+          <h5>Skills:</h5>
+          <ul *ngFor="let item of LocalJob?.skills">
+              <li>{{item.skill}}</li>
+          </ul>
+          <h5>Job Description:</h5>
+          <p>{{LocalJob?.job_description}}</p>
+          <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Update current job
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+        <div class="modal-body">
+            <form [formGroup]='job' class="box p-40"><!-- Nav tabs --><!-- Tab panes -->
+              <mat-form-field class="example-full-width">
+                  <input matInput required type="text" class="form-item" name="post" formControlName="post">
+                  <mat-error *ngIf="job.get('post').invalid">
+                      Required!!
+                  </mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                  <mat-select multiple placeholder="Choose a type" matNativeControl required name="type_job" formControlName="type_job">
+                    <option disabled>Choose a Type</option>
+                    <mat-option value="CDI">CDI</mat-option>
+                    <mat-option value="CDD">CDD</mat-option>
+                    <mat-option value="SIVP">SIVP</mat-option>
+                    <mat-option value="Freelance">Freelance</mat-option>
+                    <mat-option value="certification">certification</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="job.get('type_job').invalid">
+                    Required!!
+                  </mat-error>
+                </mat-form-field><br/>
+                <mat-form-field>
+                    <mat-select multiple placeholder="Time Job" matNativeControl required name="time_job" formControlName="time_job">
+                      <option disabled>Choose a Time</option>
+                      <mat-option value="full-time">Full-time</mat-option>
+                      <mat-option value="part-time">Part-time</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="job.get('time_job').invalid">
+                      Required!!
+                    </mat-error>
+                  </mat-form-field><br/>
+  
+                  <mat-form-field class="example-chip-list">
+                    <mat-chip-list #chipList>
+                      <mat-chip *ngFor="let skill of job.controls['skills'].value;let i = index;" [selectable]="selectable"
+                               [removable]="removable" (removed)="remove(i)">
+                        {{skill.skill}}
+                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                      </mat-chip>
+                      <input name="skills"  placeholder="New skill..."
+                             [matChipInputFor]="chipList"
+                             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                             [matChipInputAddOnBlur]="addOnBlur"
+                             (matChipInputTokenEnd)="add($event)">
+                    </mat-chip-list>
+                    <mat-error *ngIf="job.get('skills').controls.invalid">
+                      Required!!
+                  </mat-error>
+                  </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <textarea class="example-full-width" matNativeControl required name="job_description" formControlName="job_description"></textarea>
+                    <mat-error *ngIf="job.get('job_description').invalid">
+                        Required!!
+                      </mat-error>
+                </mat-form-field>
+  
+                <button (click)="UpdateJob(LocalJob?._id, job)" data-dismiss="modal" [disabled]="job.invalid" class="ht-btn bg-4f84c4 col-lg-offset-3">Update Job</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

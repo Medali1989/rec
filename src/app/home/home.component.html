@@ -1,0 +1,88 @@
+<div class="preloader"><i class="fa fa-spinner"></i></div>
+
+<section>
+  <div class="banner bg-image-1 h-700 main-banner bg-fixed">
+    <div class="container">
+      <div class="caption align_item p-xs-20">
+        <h1 class="f-80 f-xs-50 p-t-0 f-weight-300 f-family-poppins text-uppercase p-b-10">Job<strong class="f-bold">Seeker</strong></h1>
+        <h5 class="f-30 f-xs-18 f-normal f-family-poppins">Search millions of Jobs for free</h5>
+        <p class="max-w-800">Lorem ipsum dolor sit amet consectetur adipisicing  labore et dolore magna aliqua uat veniama icing met co</p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section *ngIf="!isConnected" class="block-2 p-t-30 p-b-30">
+  <div class="container">
+    <div class="bg-4f84c4 thumb-item text-left p-t-30 p-b-30 m-b-0 findjob">
+      <div class="row">
+        <div class="col-sm-7">
+          <div>
+            <h4 class="heading p-b-10 f-sm-20"><i class="fa fa-pencil-square-o pull-left m-t-ab-10"></i>We help you to find a good job</h4>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="pull-right"><a routerLink="/RegisterProfil" class="ht-btn ht-btn-3x bg-f m-t-5">Register with us</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section *ngIf="!isConnected" class="block-2 p-t-30 p-b-30">
+    <div class="container">
+      <div class="bg-4f84c4 thumb-item text-left p-t-30 p-b-30 m-b-0">
+        <div class="row">
+          <div class="col-sm-7">
+            <div>
+              <h4 class="heading p-b-10 f-sm-20"><i class="fa fa-pencil-square-o pull-left m-t-ab-10"></i>We help you to find a good employee</h4>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="pull-right"><a routerLink="/RegisterCompany" class="ht-btn ht-btn-3x bg-f m-t-5">Register with us</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="job bg-f">
+  <div class="container">
+    <div class="title-group line-default">
+      <h2>Latest Jobs</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing  labore et dolore</p>
+    </div>
+    <div class="row ">
+
+      <div class="col-sm-10"><!-- Blog-item -->
+        <div class="box-item"  *ngFor="let job of tableActive">
+          <div class="row">
+            <div class="col-sm-2 text-center">
+              <a href="javascript:void(0)" (click)="setjob(job?._id)" class="thumb-img"><img src="http://localhost:4000/{{removeFakePathUrl(job?.owner.logo)}}" alt="image"></a>
+            </div>
+            <div class="col-sm-10">
+              <h3 class="heading p-t-0">
+                <a href="javascript:void(0)" (click)="setjob(job?._id)" >{{job?.post}}</a>
+                <span>January 23 2015</span>
+              </h3>
+              <p>{{job?.owner.nameCompany}}<span class="color-a">| {{job?.owner.adress}}</span></p>
+              <p class="selected">{{job?.job_description}}</p>
+              <div class="p-t-5">
+                  <ul class="list-inline">
+                    <li><a href="#"><i class="fab fa-facebook-f icon icon-30 rad-5 bg-4f84c4"></i></a></li>
+                    <li><a href="#"><i class="fab fa-google icon icon-30 rad-5 bg-f2552c"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter icon icon-30 rad-5 bg-95dee3"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram icon icon-30 rad-5 bg-fe718b"></i></a></li>
+                  </ul>
+                <a href="javascript:void(0)" (click)="setjob(job?._id)"  class="btn btn-sm btn-info pull-right">Apply</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a routerLink="/Profil/AllJobs" class="ht-btn bg-4f84c4 no-border m-t-30">Browse all Jobs</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+

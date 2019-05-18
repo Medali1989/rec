@@ -1,0 +1,85 @@
+
+<section class="job bg-f">
+    <div class="container  mat-elevation-z8">
+      <div class="title-group line-default">
+        <h2>Jobs</h2>
+        <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing  labore et dolore</p> -->
+      </div>
+      <div class="example-header">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field><br/>
+        <table class="table-filter">
+          <tr>
+            <td colspan="2">
+              <input type="checkbox"  id="customCheck" (click)="pipeFilter($event.target.checked,$event.target.value,'jobTime')" value="part-time">
+              <label  for="customCheck">Part time</label>
+            </td> 
+            <td colspan="2">
+              <input type="checkbox"  id="customCheck1" (click)="pipeFilter($event.target.checked,$event.target.value,'jobTime')" value="full-time">
+              <label  for="customCheck1">Full time</label> 
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox"  id="customCheck2" (change)="pipeFilter($event.target.checked,$event.target.value,'jobType')" value="CDD">
+              <label  for="customCheck2">CDD</label>
+            </td>
+            <td>
+              <input type="checkbox"  id="customCheck3" (change)="pipeFilter($event.target.checked,$event.target.value,'jobType')" value="CDI">
+              <label  for="customCheck3">CDI</label>
+            </td>
+            <td>
+              <input type="checkbox"  id="customCheck4" (change)="pipeFilter($event.target.checked,$event.target.value,'jobType')" value="SIVP">
+              <label  for="customCheck4">SIVP</label>
+            </td>
+            <td>
+              <input type="checkbox"  id="customCheck5" (change)="pipeFilter($event.target.checked,$event.target.value,'jobType')" value="Freelance">
+              <label  for="customCheck5">Freelance</label>
+            </td>
+            <td>
+              <input type="checkbox"  id="customCheck6" (change)="pipeFilter($event.target.checked,$event.target.value,'jobType')" value="certification">
+              <label  for="customCheck6">Freelance</label>
+            </td>
+          </tr>
+        </table>
+        <div >
+          
+        </div>
+        <div>          
+        </div>
+        <div>
+        </div>        
+      </div>
+
+      <div class="row justify-content-md-center">
+  
+        <div class="col-sm-12"><!-- Blog-item -->
+          <div class="box-item"  *ngFor="let job of dataSource?.filteredData | jobFilter:isChecked">
+            <div class="row justify-content-md-center">
+              <div class="col-sm-2 text-center">
+                <a href="javascript:void(0)" (click)="setjob(job?._id)" class="thumb-img"><img src="http://localhost:4000/{{removeFakePathUrl(job?.owner.logo)}}" alt="image"></a>
+              </div>
+              <div class="col-sm-10">
+                <h3 class="heading p-t-0">
+                  <a class="kais" href="javascript:void(0)" (click)="setjob(job?._id)" >{{job?.post}}</a>
+                  <span>{{job?.applied_profiles.length}}: Apply</span>
+                </h3>
+                <p>{{job?.owner.nameCompany}}<span class="color-a">| {{job?.owner.adress}}</span></p>
+                <p class="selected">{{job?.job_description}}</p>
+                <div class="p-t-5">
+                    <ul class="list-inline">
+                      <li><button  title="Facebook share" shareButton="facebook"><i class="fab fa-facebook-f icon icon-30 rad-5 bg-4f84c4"></i></button></li>
+                      <li><button  title="LinkedIn Share" shareButton="linkedin"><i class="fab fa-linkedin-in icon icon-30 rad-5 bg-0e76a8"></i></button></li>
+                      <li><button title="Twiiter share" shareButton="twitter"><i class="fab fa-twitter icon icon-30 rad-5 bg-95dee3"></i></button></li>
+                    </ul>
+                  <a href="javascript:void(0)" (click)="setjob(job?._id)"  class="btn btn-sm btn-info pull-right">Apply</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>

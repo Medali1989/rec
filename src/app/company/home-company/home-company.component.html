@@ -1,0 +1,70 @@
+<section class="block">
+    <div class="container">
+      <div class="title-group line-default">
+        <h1 class="selected">{{company?.nameCompany}}</h1>
+        <h3 class="f-weight-400">{{company?.adress}}</h3>
+        <div class="wrap-img"><img src="http://localhost:4000/{{removeFakePathUrl(company?.logo)}}" alt="image" class="w-full"></div>
+        <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing  labore et dolore magna aliqua uat veniama icing elit sed do eiusmod temp incidunt bomet co</p> -->
+      </div>
+      <div class="row">
+          <div class="col-md-3 ">
+              <div class="list-2"><!-- Product-item -->
+                <a class="thumb-item selected">
+                    <i class="far fa-building"></i>
+                    <h4 class="heading">Company Home<br></h4>
+                  </a>
+                <a class="thumb-item">
+                  <i class="fas fa-file-alt"></i>
+                  <h4 class="heading">Company profile<br></h4>
+                </a>
+                <a routerLink="/Company/ListJob" class="thumb-item">
+                  <i class="far fa-sticky-note"></i>
+                  <h4 class="heading">Manage jobs<br></h4>
+                </a>
+                <a routerLink="/Company/PostJob" class="thumb-item">
+                  <i class="fas fa-cloud-upload-alt mr"></i>
+                  <h4 class="heading">Post job<br></h4>
+                </a>
+              </div>
+            </div>
+        <div class="col-sm-9 ">
+          <div class="box-shadow-d p-30 bg-f">
+            <div>
+              <ul class="list list-1x m-t-10">
+                <li><strong>Email Company</strong>{{company?.emailCompany}}</li>
+                <li><strong>Company Size</strong><span>{{company?.size}}</span></li>
+                <li *ngIf="company?.phone != ''"><strong>Phone</strong>{{company?.phone}}</li>
+                <li><strong>Adress</strong>{{company?.adress}}, {{company?.otherAdress}}</li>
+                <li *ngIf="company?.webSite"><strong>Website</strong><span class="w-150">{{company?.webSite}}</span></li>
+              </ul>
+              <ul class="list-inline m-t-15 m-b-20">
+                <li *ngIf="company?.facebook"><a target="_blank" title="Facebook Link" href="{{company?.facebook}}"><i class="fab fa-facebook-f icon icon-40 rad-3 bg-4f84c4"></i></a></li>
+                <li *ngIf="company?.google"><a href="{{company?.google}}"><i class="fab fa-google icon icon-40 rad-3 bg-f2552c"></i></a></li>
+                <li *ngIf="company?.twitter"><a href="{{company?.twitter}}"><i class="fab fa-twitter icon icon-40 rad-3 bg-95dee3"></i></a></li>
+                <li *ngIf="company?.instagram"><a href="{{company?.instagram}}"><i class="fab fa-instagram icon icon-40 rad-3 bg-fe718b"></i></a></li>
+              </ul>
+            </div>
+            <div>
+              
+              
+              <h2 class="f-20">Our Jobs ({{ListJob?.length}})</h2>
+              <div *ngFor="let job of ListJob">
+                <div class="border-1x p-20 m-b-10">
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <div class="caption">
+                        <h3 class="p-0 f-18">
+                          <span class="TitleSpan" (click)="setJob(job?._id)">{{job?.post}}</span>                          
+                          <span class="m-b-5 color-a pull-right f-14 f-weight-400">{{job?.status}}</span>
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

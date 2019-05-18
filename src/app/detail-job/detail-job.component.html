@@ -1,0 +1,54 @@
+<section class="block">
+  <div class="container">
+    <div class="title-group line-default">
+      <h1 class="selected">{{job?.post}}</h1>
+      <div class="f-weight-400">{{job?.owner.nameCompany}}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 ">
+          <div class="box-shadow-d p-30 bg-f">
+            <div class="row justify-content-md-center">
+                <img src="http://localhost:4000/{{removeFakePathUrl(job?.owner.logo)}}" alt="image" class="w-full">
+            </div>
+            <div class="row">
+              <h5><strong>Company:</strong> {{job?.owner.nameCompany}}</h5>
+            </div>
+            <div class="row">              
+              <p><strong>Adress: </strong>{{job?.owner.adress}}, {{job?.owner.otherAdress}}</p>
+            </div>
+            <div class="row">
+              <p><strong>Size: </strong> {{job?.owner.size}}</p>
+            </div>
+            <div class="row">
+              <p><strong>Email: </strong>{{job?.owner.emailCompany}}</p>
+            </div>
+          </div>
+        </div>
+      <div class="col-sm-9 ">
+        <div class="box-shadow-d p-30 bg-f">
+          <div class="pad-box">
+            <ul class="list list-1x m-t-10">
+              <li><strong>Job: </strong>{{job?.post}}</li>
+              <li><Strong>Skills: </Strong><ul class="elem-skil" *ngFor="let elem of job?.skills">
+                <li class="elem-skil">--{{elem.skill}}-- </li></ul>
+              </li>
+              <li><strong>Time job: </strong>{{job?.time_job}}</li>
+              <li><strong>Type job</strong>{{job?.type_job}}</li>
+              <li><strong>Job description: </strong>{{job?.job_description}}</li>
+            </ul>
+            <button *ngIf="connected() && !applyed" (click)="ApplyJob(profile?._id,job?._id,job )"  class="btn btn-sm btn-info pull-right">Apply</button>
+            <button *ngIf="!connected()" class="btn btn-sm btn-info pull-right">U must be Login To apply</button>
+            <span *ngIf="applyed" class="btn btn-sm btn-info pull-right">U have already apply in this job</span>
+
+            <!-- <ul class="list-inline m-t-15 m-b-20">
+              <li><a href="#"><i class="fab fa-facebook-f icon icon-40 rad-3 bg-4f84c4"></i></a></li>
+              <li><a href="#"><i class="fab fa-google icon icon-40 rad-3 bg-f2552c"></i></a></li>
+              <li><a href="#"><i class="fab fa-twitter icon icon-40 rad-3 bg-95dee3"></i></a></li>
+              <li><a href="#"><i class="fab fa-instagram icon icon-40 rad-3 bg-fe718b"></i></a></li>
+            </ul> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
